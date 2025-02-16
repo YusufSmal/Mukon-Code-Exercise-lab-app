@@ -1,0 +1,31 @@
+<div class="container mt-4 MainCard">
+  <h3>Available Tests</h3>
+
+  <table mat-table [dataSource]="tests" class="mat-elevation-z8 w-100">
+    <ng-container matColumnDef="TestId">
+      <th mat-header-cell *matHeaderCellDef> Test ID </th>
+      <td mat-cell *matCellDef="let test"> {{ test.TestId }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Mnemonic">
+      <th mat-header-cell *matHeaderCellDef> Mnemonic </th>
+      <td mat-cell *matCellDef="let test"> {{ test.Mnemonic }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let test"> {{ test.Description }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="IsActive">
+      <th mat-header-cell *matHeaderCellDef> Active </th>
+      <td mat-cell *matCellDef="let test">
+        <mat-icon *ngIf="test.IsActive" color="primary">check_circle</mat-icon>
+        <mat-icon *ngIf="!test.IsActive" color="warn">cancel</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['TestId', 'Mnemonic', 'Description', 'IsActive']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['TestId', 'Mnemonic', 'Description', 'IsActive'];"></tr>
+  </table>
+</div>

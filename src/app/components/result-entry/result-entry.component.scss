@@ -1,0 +1,55 @@
+.patient-details {
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 24px;
+
+  h4 {
+    color: #2c3e50;
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin-bottom: 8px;
+    color: #34495e;
+  }
+
+  strong {
+    color: #2c3e50;
+  }
+}
+
+.test-results {
+  h4 {
+    color: #2c3e50;
+    margin-bottom: 24px;
+  }
+
+  .test-result-item {
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: white;
+
+    h5 {
+      color: #2c3e50;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    &:hover {
+      border-color: #dee2e6;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+  }
+}
+
+.mat-mdc-form-field {
+  margin-bottom: 16px;
+}
+
+button[type="submit"] {
+  margin-top: 24px;
+  width: 200px;
+}

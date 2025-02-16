@@ -1,0 +1,67 @@
+<div class="container mt-4">
+  <mat-card class="MainCard">
+    <h3>Enter Test Results</h3>
+    <form [formGroup]="resultForm" (ngSubmit)="saveResults()">
+      <mat-card-content>
+        <!-- Requisition Selection -->
+        <div class="mb-4">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Select Patient</mat-label>
+            <mat-select formControlName="requisitionId" (selectionChange)="onRequisitionSelect()">
+              <mat-option *ngFor="let req of requisitions" [value]="req.RequisitionId">
+                {{ req.RequisitionId }} - {{ req.FirstName }} {{ req.Surname }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Patient Details -->
+        <div *ngIf="selectedRequisition" class="mb-4 patient-details">
+          <h4>Patient Information</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>Name:</strong> {{ selectedRequisition.FirstName }} {{ selectedRequisition.Surname }}</p>
+              <p><strong>Gender:</strong> {{ selectedRequisition.Gender }}</p>
+            </div>
+            <div class="col-md-6">
+              <p><strong>Age:</strong> {{ selectedRequisition.Age }}</p>
+              <p><strong>Mobile:</strong> {{ selectedRequisition.MobileNumber }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Test Results -->
+        <div *ngIf="selectedRequisition" class="test-results" formArrayName="testResults">
+          <h4>Test Results</h4>
+          <div *ngFor="let testControl of testResults.controls; let i = index" [formGroupName]="i" class="test-result-item mb-4">
+            <div class="row">
+              <div class="col-md-6">
+                <h5>{{ testControl.get('Mnemonic')?.value }} - {{ testControl.get('Description')?.value }}</h5>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Result</mat-label>
+                  <input matInput formControlName="Result" required>
+                  <mat-error *ngIf="testControl.get('Result')?.invalid && testControl.get('Result')?.touched">
+                    Result is required
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Comment</mat-label>
+                  <input matInput formControlName="Comment">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button mat-raised-button color="primary" type="submit" 
+                [disabled]="!resultForm.valid || !selectedRequisition" 
+                class="mt-3">
+          Save Results
+        </button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

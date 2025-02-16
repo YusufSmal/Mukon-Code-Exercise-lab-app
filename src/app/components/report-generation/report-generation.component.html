@@ -1,0 +1,11 @@
+<div class="container mt-4">
+  <mat-card class="MainCard">
+    <h3>Generate Reports</h3>
+    <p>Select a report format to download:</p>
+
+    <div class="d-flex gap-3 btn-layout">
+      <button mat-raised-button (click)="downloadJSONReport()">Download JSON Report</button>
+      <button mat-raised-button (click)="downloadTextReport()">Download Text Report</button>
+    </div>
+  </mat-card>
+</div>

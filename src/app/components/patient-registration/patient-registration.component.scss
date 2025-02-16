@@ -1,0 +1,21 @@
+.form-field-container {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.mat-label {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+}
+
+.checkbox-group {
+  margin-top: 8px;
+}
+
+mat-error {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #f44336;
+}
